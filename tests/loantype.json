@@ -1,0 +1,86 @@
+{
+    "setUp": {
+        "user": {
+            "username": "testuser",
+            "password": "testpass",
+            "is_staff": true
+        }
+    },
+    "test_create_loan_type": {
+        "data": {
+            "name": "Emprestimo Teste",
+            "factor": 0
+        },
+        "response_status": 201
+    },
+    "test_create_loan_type_non_staff": {
+        "user": {
+            "username": "testuser2",
+            "password": "sekret"
+        },
+        "data": {
+            "name": "Emprestimo Teste",
+            "factor": 0
+        },
+        "response_status": 403
+    },
+    "test_create_loan_type_factor_less_than_zero": {
+        "data": {
+            "name": "Emprestimo Teste",
+            "factor": -1
+        },
+        "response_status": 400
+    },
+    "test_get_loan_type": {
+        "loan_type": {
+            "name": "Emprestimo Teste",
+            "factor": 0
+        },
+        "response_status": 200,
+        "response_data": {
+            "name": "Emprestimo Teste"
+        }
+    },
+    "test_update_loan_type": {
+        "loan_type": {
+            "name": "Emprestimo Teste",
+            "factor": 0
+        },
+        "new_data": {
+            "factor": 1.5
+        },
+        "response_status": 200
+    },
+    "test_update_loan_type_non_staff": {
+        "loan_type": {
+            "name": "Emprestimo Teste",
+            "factor": 0
+        },
+        "user": {
+            "username": "testuser2",
+            "password": "sekret"
+        },
+        "new_data": {
+            "factor": 1.5
+        },
+        "response_status": 403
+    },
+    "test_delete_loan_type": {
+        "loan_type": {
+            "name": "Emprestimo Teste",
+            "factor": 0
+        },
+        "response_status": 204
+    },
+    "test_delete_loan_type_non_staff": {
+        "loan_type": {
+            "name": "Emprestimo Teste",
+            "factor": 0
+        },
+        "user": {
+            "username": "testuser2",
+            "password": "sekret"
+        },
+        "response_status": 403
+    }
+}

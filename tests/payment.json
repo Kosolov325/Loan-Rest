@@ -1,0 +1,138 @@
+{
+    "setUp": {
+        "user": {
+            "username": "testuser",
+            "password": "testpass"
+        },
+        "generic_type":{
+            "pk":1
+        },
+        "loan":{
+                "value": 1000.00,
+                "date": "2024-09-22",
+                "ip_address":"127.0.0.1",
+                "bank": "Banco Teste"
+        }
+    },
+    "test_create_payment":{
+        "data":{
+            "amount": 200.00,
+            "date": "2024-09-22"
+        },
+        "response_status":201,
+        "count":1,
+        "amount":200.00
+    },
+    "test_edit_payment":{
+        "data":{
+            "amount": 200.00,
+            "date": "2024-09-22"
+        },
+        "new_data":{
+            "amount":600.00
+        },
+        "response_status": 405
+    },
+    "test_view_payment":{
+        "data":{
+            "amount": 200.00,
+            "date": "2024-09-22"
+        },
+        "response_status":200
+    },
+    "test_delete_payment":{
+        "data":{
+            "amount": 200.00,
+            "date": "2024-09-22"
+        },
+        "response_status":405
+    },
+    "test_view_payment_for_other_user_loan":{
+        "other_user":{
+            "username":"other", 
+            "password":"sekret"
+        },
+        "other_loan":{
+            "value":100.00,
+            "type":1,
+            "date":"2024-09-22",
+            "ip_address":"127.0.0.1",
+            "bank":"Banco Teste"
+        },
+        "data":{
+            "amount":100.00,
+            "date": "2024-09-22"
+        },
+        "response_status":404
+    },
+    "test_create_payment_for_other_user_loan":{
+        "other_user":{
+            "username":"other", 
+            "password":"sekret"
+        },
+        "other_loan":{
+            "value":100.00,
+            "type":1,
+            "date":"2024-09-22",
+            "ip_address":"127.0.0.1",
+            "bank":"Banco Teste"
+        },
+        "data":{
+            "amount":200.00,
+            "date": "2024-09-22"
+        },
+        "response_status":400
+    },
+    "test_edit_payment_for_other_user_loan":{
+        "other_user":{
+            "username":"other", 
+            "password":"sekret"
+        },
+        "other_loan":{
+            "value":100.00,
+            "type":1,
+            "date":"2024-09-22",
+            "ip_address":"127.0.0.1",
+            "bank":"Banco Teste"
+        },
+        "other_payment":{
+            "amount":200.00,
+            "date": "2024-09-22"
+        },
+        "new_data":{
+            "amount":300.00
+        },
+        "response_status":405
+    },
+    "test_delete_payment_for_other_user_loan":{
+        "other_user":{
+            "username":"other", 
+            "password":"sekret"
+        },
+        "other_loan":{
+            "value":100.00,
+            "type":1,
+            "date":"2024-09-22",
+            "ip_address":"127.0.0.1",
+            "bank":"Banco Teste"
+        },
+        "other_payment":{
+            "amount":200.00,
+            "date": "2024-09-22"
+        },
+        "response_status":405
+    },
+    "test_create_payment_greater_loan_debt":{
+        "data":{
+            "amount": 1050.00,
+            "date": "2024-09-22"
+        },
+        "response_status":400
+    },
+    "test_create_payment_negative_amount": {
+        "data": {
+            "amount": -500
+        },
+        "response_status": 400
+    }
+}
